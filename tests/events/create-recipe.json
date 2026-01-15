@@ -1,0 +1,19 @@
+{
+  "version": "2.0",
+  "routeKey": "POST /recipes",
+  "rawPath": "/recipes",
+  "rawQueryString": "",
+  "headers": {
+    "accept": "application/json",
+    "content-type": "application/json"
+  },
+  "queryStringParameters": null,
+  "requestContext": {
+    "http": {
+      "method": "POST",
+      "path": "/recipes",
+      "protocol": "HTTP/1.1"
+    }
+  },
+  "body": "{\"name\":\"Spaghetti Carbonara\",\"description\":\"Un classique de la cuisine italienne\",\"ingredients\":[{\"name\":\"Spaghetti\",\"quantity\":400,\"unit\":\"g\"},{\"name\":\"Oeufs\",\"quantity\":4,\"unit\":\"pièces\"},{\"name\":\"Guanciale\",\"quantity\":150,\"unit\":\"g\"},{\"name\":\"Parmesan\",\"quantity\":100,\"unit\":\"g\"},{\"name\":\"Poivre noir\",\"quantity\":1,\"unit\":\"pincée\"}],\"instructions\":[\"Faire cuire les pâtes dans une grande casserole d'eau bouillante salée\",\"Couper le guanciale en petits dés et le faire revenir dans une poêle\",\"Battre les oeufs avec le parmesan râpé\",\"Égoutter les pâtes et les mélanger avec le guanciale\",\"Ajouter le mélange oeufs-parmesan hors du feu et mélanger rapidement\",\"Poivrer généreusement et servir immédiatement\"],\"prepTime\":15,\"cookTime\":20,\"servings\":4,\"difficulty\":\"moyen\",\"tags\":[\"italien\",\"pâtes\",\"rapide\"]}"
+}

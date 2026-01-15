@@ -1,0 +1,21 @@
+{
+  "version": "2.0",
+  "routeKey": "GET /recipes/{id}",
+  "rawPath": "/recipes/507f1f77bcf86cd799439011",
+  "rawQueryString": "",
+  "headers": {
+    "accept": "application/json",
+    "content-type": "application/json"
+  },
+  "pathParameters": {
+    "id": "507f1f77bcf86cd799439011"
+  },
+  "queryStringParameters": null,
+  "requestContext": {
+    "http": {
+      "method": "GET",
+      "path": "/recipes/507f1f77bcf86cd799439011",
+      "protocol": "HTTP/1.1"
+    }
+  }
+}

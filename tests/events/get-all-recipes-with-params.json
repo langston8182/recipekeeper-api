@@ -1,0 +1,24 @@
+{
+  "version": "2.0",
+  "routeKey": "GET /recipes",
+  "rawPath": "/recipes",
+  "rawQueryString": "limit=10&skip=0&sortBy=name&sortOrder=asc&tags=italien,rapide",
+  "headers": {
+    "accept": "application/json",
+    "content-type": "application/json"
+  },
+  "queryStringParameters": {
+    "limit": "10",
+    "skip": "0",
+    "sortBy": "name",
+    "sortOrder": "asc",
+    "tags": "italien,rapide"
+  },
+  "requestContext": {
+    "http": {
+      "method": "GET",
+      "path": "/recipes",
+      "protocol": "HTTP/1.1"
+    }
+  }
+}
