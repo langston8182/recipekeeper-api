@@ -1,4 +1,4 @@
-import {MongoClient} from "mongodb";
+import mongoose from 'mongoose';
 import {getConfigValue} from "./config.appconfig.mjs";
 
 const ENV = process.env.ENVIRONMENT || "preprod";
@@ -6,12 +6,11 @@ const DB_NAME = process.env.DB_NAME;
 
 // Simple in-memory cache for the Lambda runtime
 const cache = {
-    client: null,
-    db: null,
     uri: null,
     uriPromise: null,
     dbName: null,
     dbNamePromise: null,
+    isConnected: false
 };
 
 async function getUri() {
@@ -47,28 +46,40 @@ async function getDbName() {
 }
 
 export async function getDb() {
-    if (cache.db) return cache.db;
+    if (cache.isConnected && mongoose.connection.readyState === 1) {
+        return mongoose.connection.db;
+    }
+    
     const uri = await getUri();
-    const client = new MongoClient(uri, {maxPoolSize: 5});
-    await client.connect();
-    cache.client = client;
     const dbName = await getDbName();
-    cache.db = client.db(dbName);
+    
+    console.log('Connecting to DB:', uri);
+    
+    // Configuration Mongoose pour MongoDB Atlas
+    await mongoose.connect(uri, {
+        dbName: dbName,
+        serverSelectionTimeoutMS: 5000,
+        socketTimeoutMS: 45000,
+        maxPoolSize: 5
+    });
+    
+    cache.isConnected = true;
     console.log("Connected DB:", dbName);
-    return cache.db;
+    return mongoose.connection.db;
 }
 
 export async function getClient() {
-    if (cache.client) return cache.client;
+    if (cache.isConnected && mongoose.connection.readyState === 1) {
+        return mongoose.connection.getClient();
+    }
     await getDb();
-    return cache.client;
+    return mongoose.connection.getClient();
 }
 
 export async function closeDb() {
-    if (cache.client) {
-        await cache.client.close();
-        cache.client = null;
-        cache.db = null;
+    if (cache.isConnected) {
+        await mongoose.disconnect();
+        cache.isConnected = false;
         cache.uri = null;
         cache.uriPromise = null;
         cache.dbName = null;

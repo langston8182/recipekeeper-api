@@ -22,7 +22,7 @@ Globals:
     Runtime: nodejs22.x
     Architectures: [arm64]
     MemorySize: 512
-    Timeout: 15
+    Timeout: 30
     Tracing: Active
     Environment:
       Variables:
