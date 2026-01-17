@@ -1,5 +1,6 @@
 import {getDb} from "./utils/db.mjs";
 import recipeController from './controllers/recipeController.js';
+import uploadController from './controllers/uploadController.js';
 import Router from './utils/router.js';
 
 // Initialiser le router
@@ -9,6 +10,9 @@ const router = new Router();
 router.addRoute('POST', '/recipes', (event) => recipeController.createRecipe(event));
 router.addRoute('GET', '/recipes/{id}', (event) => recipeController.getRecipe(event));
 router.addRoute('GET', '/recipes', (event) => recipeController.getAllRecipes(event));
+
+// Routes d'upload
+router.addRoute('POST', '/recipes/upload', (event) => uploadController.getPresignedUrl(event));
 
 /**
  * Point d'entrée principal de la Lambda

@@ -7,9 +7,9 @@ info:
     name: RecipeKeeper Support
 
 servers:
-  - url: https://api.example.com/prod
+  - url: https://recipekeeper-api.cyrilmarchive.com
     description: Production
-  - url: https://api.example.com/dev
+  - url: https://recipekeeper-api-preprod.cyrilmarchive.com
     description: Development
 
 tags:
